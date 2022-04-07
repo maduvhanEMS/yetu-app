@@ -1,0 +1,81 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Email Template</title>
+    <link
+      href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css'
+      rel='stylesheet'
+    />
+    <link
+      href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'
+      rel='stylesheet'
+    />
+
+    <style>
+      .container-email { margin: 10px; } h2 { color: #6e6c6c; font-size: 16px;
+      margin-bottom: 20px; } .message { font-size: 16px; margin-bottom: 20px; }
+      .footer { margin-bottom: 20px; font-size: 16px; } .regards span { display:
+      block; font-weight: bold; margin-top: 2px; } .link { font-style: normal;
+      line-height: 10px; margin-top: 2px; } .image { border-bottom: solid 0.1rem
+      rgba(0, 0, 00.96); /* width: 100%; */ width: 300px; object-fit: contain;
+      /* height: 40px; */ } .icons a { padding-right: 20px; text-decoration:
+      none; } .tasks { margin-bottom: 30px; } li { font-size: 16px; color:
+      #6e6c6c; font-style: italic; margin-right: 10px; } li span { width: 100px;
+      display: inline-block; } li p { display: inline-block; padding-left: 20px;
+      } .icons {display: flex; flex-direction: column;}
+    </style>
+    <script src='https://use.fontawesome.com/ee0449b92a.js'></script>
+  </head>
+  <body>
+    <div class='container-email'>
+      <h2 class='header'>Good day <span>{{user}}</span></h2>
+      <div class='message'>{{message}}</div>
+      <div class='tasks'>
+        <ul>
+          <li>
+            <span>Task name:</span>
+            <p>{{task_name}}</p>
+          </li>
+          <li>
+            <span>Objective:</span>
+            <p>{{objective}}</p>
+          </li>
+          <li>
+            <span>Start Date:</span>
+            <p>{{startDate}}</p>
+          </li>
+          <li>
+            <span>target Date:</span>
+            <p>{{endDate}}</p>
+          </li>
+          <li>
+            <span>Duration:</span>
+            <p>{{duration}}</p>
+          </li>
+          <li>
+            <span>Dependencies:</span>
+            <p>{{dependencies}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class='footer'>
+        <div><span>Kind regards</span></div>
+        <div class='regards'><span>Yetu Investments Directors</span></div>
+        <div class='link'><a href='#'>www.yetuinvestments.co.za</a></div>
+      </div>
+      <span class='line-break'></span>
+      <div>
+        <img src='cid:yetu' alt='Yetu Investments' class='image' />
+      </div>
+      <div class='icons'>
+        <a href='#'><img src='cid:twitter' alt='Yetu Investments' /></a>
+        <a href='#'><img src='cid:facebook' alt='Yetu Investments' /></a>
+        <a href='#'><img src='cid:linkedin' alt='Yetu Investments' /></a>
+        <a href='#'><img src='cid:instagram' alt='Yetu Investments' /></a>
+      </div>
+    </div>
+    {{! <script src='https://use.fontawesome.com/ee0449b92a.js'></script> }}
+  </body>
+</html>

@@ -1,0 +1,19 @@
+.header {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.header span {
+  margin-left: 10px;
+}
+
+.message {
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.footer {
+  font-style: italic;
+  margin: 10px;
+}

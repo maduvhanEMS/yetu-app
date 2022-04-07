@@ -1,0 +1,314 @@
+[
+    {
+        "_id": "62276ebe63c396b83fb831cb",
+        "project_name": "Project 1",
+        "description": "Convince Maduvha to relocate back to Joburg ",
+        "tasks": [
+            {
+                "_id": "622798de26f3f76e6ec0ae4c",
+                "user": "6228f38cfde1faba23972752",
+                "goal": "62276ebe63c396b83fb831cb",
+                "createdAt": "2022-03-08T17:56:46.649Z",
+                "updatedAt": "2022-03-12T15:29:02.514Z",
+                "__v": 0,
+                "outcomes": "We approached several banks with no success",
+                "objective": "Get a loan for Yetu Investments",
+                "task_name": "Loan",
+                "endDate": "2022-03-13T17:57:54.132Z"
+            },
+            {
+                "_id": "6227992226f3f76e6ec0ae4f",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "62276ebe63c396b83fb831cb",
+                "createdAt": "2022-03-08T17:57:54.132Z",
+                "updatedAt": "2022-03-12T15:31:29.338Z",
+                "__v": 0,
+                "outcomes": "I have managed to convince ABSA to give favorable rates",
+                "objective": "Get decent interest rate",
+                "task_name": "Get an appartment",
+                "endDate": "2022-03-10T17:57:54.132Z"
+            },
+            {
+                "_id": "622de541d911258abb3f159c",
+                "user": "6228f38cfde1faba23972752",
+                "goal": "62276ebe63c396b83fb831cb",
+                "objective": "Design rocket propellant lunch system",
+                "outcomes": "completed",
+                "createdAt": "2022-03-13T12:36:17.605Z",
+                "updatedAt": "2022-03-13T16:12:37.290Z",
+                "__v": 0,
+                "task_name": "Design",
+                "endDate": "2022-03-18T12:35:00.000Z"
+            },
+            {
+                "_id": "622e08ea933b3f43bfcc5f9d",
+                "user": "622c72e2c14e12dcc976d920",
+                "goal": "62276ebe63c396b83fb831cb",
+                "objective": "Get work done",
+                "outcomes": "compteed",
+                "createdAt": "2022-03-13T15:08:26.272Z",
+                "updatedAt": "2022-03-13T16:18:51.244Z",
+                "__v": 0,
+                "task_name": "Housing 1",
+                "endDate": "2022-03-18T15:08:00.000Z"
+            },
+            {
+                "_id": "6232402facf8e6671a6eda22",
+                "user": "6228f38cfde1faba23972752",
+                "goal": "62276ebe63c396b83fb831cb",
+                "task_name": "Project Drone 2",
+                "objective": "Testing the system",
+                "outcomes": "maduvha",
+                "startDate": "2022-03-16T19:53:00.000Z",
+                "endDate": "2022-03-22T19:53:00.000Z",
+                "dependencies": [
+                    "Loan",
+                    "Get an appartment",
+                    "Housing 1"
+                ],
+                "createdAt": "2022-03-16T19:53:19.120Z",
+                "updatedAt": "2022-03-17T13:40:11.666Z",
+                "__v": 0
+            },
+            {
+                "_id": "624036cef72a90ba158010d4",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "62276ebe63c396b83fb831cb",
+                "task_name": "Land acquisition project",
+                "objective": "We trying  our best",
+                "outcomes": "",
+                "startDate": null,
+                "endDate": "2022-03-26T10:04:00.000Z",
+                "dependencies": [
+                    "Housing 1"
+                ],
+                "createdAt": "2022-03-27T10:05:02.716Z",
+                "updatedAt": "2022-03-27T10:05:02.716Z",
+                "__v": 0
+            }
+        ],
+        "numOfTasks": 6
+    },
+    {
+        "_id": "62276ef063c396b83fb831d5",
+        "project_name": "Project 2",
+        "description": "Second project",
+        "tasks": [
+            {
+                "_id": "6227c12a2fd79be0f1619b3d",
+                "user": "6228f38cfde1faba23972752",
+                "goal": "62276ef063c396b83fb831d5",
+                "createdAt": "2022-03-08T20:48:42.213Z",
+                "updatedAt": "2022-03-13T11:46:14.806Z",
+                "__v": 0,
+                "outcomes": "We have managed to get a loan for yetu",
+                "objective": "Get a loan for Yetu Investments",
+                "task_name": "My first task. We are getting there mate",
+                "endDate": "2022-03-10T17:57:54.132Z"
+            },
+            {
+                "_id": "622dd8c403b3df38c2e83e9c",
+                "user": "622c82b43309c060b8af4bc7",
+                "goal": "62276ef063c396b83fb831d5",
+                "objective": "Find a way to test missiles",
+                "outcomes": "maduvha Nemadndila",
+                "createdAt": "2022-03-13T11:43:00.493Z",
+                "updatedAt": "2022-03-17T13:41:08.398Z",
+                "__v": 0,
+                "task_name": "Testing",
+                "endDate": "2022-03-14T11:42:00.000Z"
+            },
+            {
+                "_id": "623a0cdcb18ca2b9c88e6e8c",
+                "user": "622c72e2c14e12dcc976d920",
+                "goal": "62276ef063c396b83fb831d5",
+                "task_name": "Project Drone 2",
+                "objective": "We are trying",
+                "outcomes": "",
+                "startDate": "2022-03-23T17:52:00.000Z",
+                "endDate": "2022-03-26T17:52:00.000Z",
+                "dependencies": [
+                    "Testing"
+                ],
+                "createdAt": "2022-03-22T17:52:28.958Z",
+                "updatedAt": "2022-03-22T17:52:28.958Z",
+                "__v": 0
+            },
+            {
+                "_id": "624034fb7f0c96fc3596688e",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "62276ef063c396b83fb831d5",
+                "task_name": "Land acquisition project",
+                "objective": "We are trying to buy land for yetu",
+                "outcomes": "",
+                "startDate": null,
+                "endDate": "2022-04-07T09:57:00.000Z",
+                "dependencies": [
+                    "Testing"
+                ],
+                "createdAt": "2022-03-27T09:57:15.655Z",
+                "updatedAt": "2022-03-27T09:57:15.655Z",
+                "__v": 0
+            }
+        ],
+        "numOfTasks": 4
+    },
+    {
+        "_id": "6227781ea6b1f92bb9594bf6",
+        "project_name": "Project 3",
+        "description": "Maduvha might leave CPT this year",
+        "tasks": [
+            {
+                "_id": "6228f499fde1faba23972769",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "6227781ea6b1f92bb9594bf6",
+                "createdAt": "2022-03-09T18:40:25.352Z",
+                "updatedAt": "2022-03-17T13:35:26.232Z",
+                "__v": 0,
+                "outcomes": "WE are currently testing missiles",
+                "task_name": "mulweli ",
+                "endDate": "2022-03-10T17:57:54.132Z",
+                "objective": "WE plant to test missiles"
+            },
+            {
+                "_id": "623a125526b168939c45e716",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "6227781ea6b1f92bb9594bf6",
+                "task_name": "Project Drone 2",
+                "objective": "m",
+                "outcomes": "",
+                "startDate": "2022-03-23T18:15:00.000Z",
+                "endDate": "2022-03-23T18:15:00.000Z",
+                "dependencies": [],
+                "createdAt": "2022-03-22T18:15:49.083Z",
+                "updatedAt": "2022-03-22T18:15:49.083Z",
+                "__v": 0
+            }
+        ],
+        "numOfTasks": 2
+    },
+    {
+        "_id": "6227ccb0f86fbc271aba8a00",
+        "project_name": "Project 4",
+        "description": "We are getting there mate",
+        "tasks": [
+            {
+                "_id": "622e18498fadca7cb0d53120",
+                "user": "622e0edbe4dd634a37fc9d18",
+                "goal": "6227ccb0f86fbc271aba8a00",
+                "objective": "maduvhah",
+                "outcomes": "",
+                "createdAt": "2022-03-13T16:14:01.365Z",
+                "updatedAt": "2022-03-13T16:14:01.365Z",
+                "__v": 0,
+                "task_name": "Project work",
+                "endDate": "2022-03-23T16:13:00.000Z"
+            },
+            {
+                "_id": "62403610f72a90ba15801097",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "6227ccb0f86fbc271aba8a00",
+                "task_name": "Land acquisition project",
+                "objective": "We are trying to buy land",
+                "outcomes": "",
+                "startDate": "2022-03-29T10:01:00.000Z",
+                "endDate": "2022-04-02T10:01:00.000Z",
+                "dependencies": [],
+                "createdAt": "2022-03-27T10:01:52.245Z",
+                "updatedAt": "2022-03-27T10:01:52.245Z",
+                "__v": 0
+            }
+        ],
+        "numOfTasks": 2
+    },
+    {
+        "_id": "6228f5c9fde1faba23972772",
+        "project_name": "Maduvha",
+        "description": "Yes we are going",
+        "tasks": [
+            {
+                "_id": "622c9b3ec51964e192be41ba",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "6228f5c9fde1faba23972772",
+                "outcomes": "Sorted",
+                "createdAt": "2022-03-12T13:08:14.189Z",
+                "updatedAt": "2022-03-13T11:53:54.390Z",
+                "__v": 0,
+                "objective": "Get more noodels",
+                "task_name": "noodles",
+                "endDate": "2022-03-14T17:57:54.132Z"
+            }
+        ],
+        "numOfTasks": 1
+    },
+    {
+        "_id": "622c761e08b1ff2b343681e7",
+        "project_name": "My First Project",
+        "description": "we are trying to establish the new what what",
+        "tasks": [
+            {
+                "_id": "622e19bd8fadca7cb0d53188",
+                "user": "622e0edbe4dd634a37fc9d18",
+                "goal": "622c761e08b1ff2b343681e7",
+                "objective": "maduvha",
+                "outcomes": "maduvhjah",
+                "createdAt": "2022-03-13T16:20:13.670Z",
+                "updatedAt": "2022-03-13T16:21:24.722Z",
+                "__v": 0,
+                "task_name": "Loan",
+                "endDate": "2022-03-15T16:20:00.000Z"
+            }
+        ],
+        "numOfTasks": 1
+    },
+    {
+        "_id": "622c8e255e4af8653847d95d",
+        "project_name": "Project Drone",
+        "description": "Design and develop a system capable of taking down a drone",
+        "tasks": [
+            {
+                "_id": "623a0d82b18ca2b9c88e6e9f",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "622c8e255e4af8653847d95d",
+                "task_name": "maduvha ",
+                "objective": "we are trying",
+                "outcomes": "",
+                "startDate": "2022-03-23T17:55:00.000Z",
+                "endDate": "2022-03-23T17:55:00.000Z",
+                "dependencies": [],
+                "createdAt": "2022-03-22T17:55:14.182Z",
+                "updatedAt": "2022-03-22T17:55:14.182Z",
+                "__v": 0
+            },
+            {
+                "_id": "623a0f082dd1504398b56616",
+                "user": "62276e7363c396b83fb831be",
+                "goal": "622c8e255e4af8653847d95d",
+                "task_name": "Project Drone 2",
+                "objective": "we are trying",
+                "outcomes": "",
+                "startDate": "2022-03-24T18:01:00.000Z",
+                "endDate": "2022-03-24T18:01:00.000Z",
+                "dependencies": [],
+                "createdAt": "2022-03-22T18:01:44.992Z",
+                "updatedAt": "2022-03-22T18:01:44.992Z",
+                "__v": 0
+            }
+        ],
+        "numOfTasks": 2
+    },
+    {
+        "_id": "622c912adca8cc3a19cf1a5e",
+        "project_name": "Project Housing",
+        "description": "Build  a couple of rooms",
+        "tasks": [],
+        "numOfTasks": 0
+    },
+    {
+        "_id": "622e19e68fadca7cb0d5319c",
+        "project_name": "Project Yetu",
+        "description": "maduvhajhja",
+        "tasks": [],
+        "numOfTasks": 0
+    }
+]

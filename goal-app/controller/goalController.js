@@ -7,26 +7,32 @@ const User = require("../models/userModel");
 //@route GET /api/v1/goals
 //access Private
 const getGoals = asyncHandler(async (req, res) => {
-  const goals = await Goal.find({ user: req.user.id });
-  res.status(200).json({ goals });
+  const goals = await Goal.find({}).populate("user", "-password");
+  res.status(200).json(goals);
 });
 
 // set goals
 //@route POST /api/v1/goals
 //access Private
 const postGoals = asyncHandler(async (req, res) => {
-  const { description, name } = req.body;
+  const { description, name, userId } = req.body;
   if (!description || !name) {
     res.status(400);
     throw new Error("Please add all fields");
   }
 
-  const goal = await Goal.create({
-    name: name,
-    description: description,
-    user: req.user.id,
-  });
-  res.status(200).json(goal);
+  //check if the user is an admin
+  if (!req.user.role) {
+    res.status(400);
+    throw new Error("You are not authorized");
+  } else {
+    const goal = await Goal.create({
+      name: name,
+      description: description,
+      user: userId,
+    });
+    res.status(200).json(goal);
+  }
 });
 
 // update goal
@@ -40,15 +46,13 @@ const updateGoal = asyncHandler(async (req, res) => {
   }
 
   // check the user
-  const user = await User.findById(req.user.id);
-
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error("User not found");
   }
 
   // make sure the logged in user
-  if (goal.user.toString() !== user.id) {
+  if (goal.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not Authorized");
   }
@@ -70,15 +74,13 @@ const deleteGoal = asyncHandler(async (req, res) => {
   }
 
   // check the user
-  const user = await User.findById(req.user.id);
-
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error("User not found");
   }
 
   // make sure the logged in user ma
-  if (goal.user.toString() !== user.id) {
+  if (goal.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not Authorized");
   }
@@ -87,4 +89,25 @@ const deleteGoal = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
-module.exports = { getGoals, postGoals, updateGoal, deleteGoal };
+//gourp projects per user
+
+const getGoalsPerUser = asyncHandler(async (req, res) => {
+  const goals = await Goal.aggregate([
+    {
+      $group: {
+        _id: "$user",
+        projects: { $push: "$$ROOT" },
+        nunberOfProjects: { $sum: 1 },
+      },
+    },
+  ]);
+  res.status(200).json(goals);
+});
+
+module.exports = {
+  getGoals,
+  postGoals,
+  updateGoal,
+  deleteGoal,
+  getGoalsPerUser,
+};

@@ -26,7 +26,12 @@ const registerUser = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   //create a user
-  const user = await User.create({ name, email, password: hashedPassword });
+  const user = await User.create({
+    name,
+    email,
+    password: hashedPassword,
+    role: req.body.role,
+  });
 
   if (user) {
     res.status(200).json({
@@ -34,6 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       counter: user.counter,
+      role: user.role,
       token: generateToken(user._id),
     });
   } else {
@@ -62,12 +68,28 @@ const loginUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       counter: user.counter,
+      role: user.role,
       token: generateToken(user._id),
     });
   } else {
     res.status(400);
     throw new Error("Invalid credentials");
   }
+});
+
+//@desc  Aunthenticate a user
+//@route get /api/v1/users
+//@access Private
+const getUsers = asyncHandler(async (req, res) => {
+  // check for user email
+  if (!req.user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  //if found get all the users - password
+  const users = await User.find({}).select("-password");
+  res.status(200).json(users);
 });
 
 //@desc  update a user
@@ -108,6 +130,7 @@ const updateUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       counter: user.counter,
+      role: user.role,
       token: generateToken(user._id),
     });
   } else {
@@ -120,12 +143,7 @@ const updateUser = asyncHandler(async (req, res) => {
 //@route GET /api/v1/goals
 //@access Private
 const getMe = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-  });
+  res.status(200).json(req.user);
 });
 
 //Generate a token
@@ -135,4 +153,4 @@ const generateToken = (id) => {
   });
 };
 
-module.exports = { registerUser, loginUser, getMe, updateUser };
+module.exports = { registerUser, loginUser, getMe, updateUser, getUsers };
