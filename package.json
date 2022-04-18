@@ -8,7 +8,8 @@
     "start": "node goal-app/index.js",
     "server": "nodemon goal-app/index.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "M Nemadandila",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "google-charts-node": "^1.0.4",
     "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "momentjs": "^2.0.0",
     "mongoose": "^6.2.4",

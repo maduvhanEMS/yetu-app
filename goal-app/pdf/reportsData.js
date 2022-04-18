@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/usersTasks', async (req, res) => {
   try {
-    const tasks = await User.aggregate([
+    const users = await User.aggregate([
       {
         $lookup: {
           from: 'tasks',
@@ -55,10 +55,13 @@ router.get('/usersTasks', async (req, res) => {
       },
     ]);
 
+    const tasks = await Task.find();
+
     // concatinate
     const fullData = {};
     fullData['projects'] = projects;
-    fullData['user'] = tasks;
+    fullData['user'] = users;
+    fullData['tasks'] = tasks;
 
     const outputFilename = path.join(__dirname, '/data.json');
 

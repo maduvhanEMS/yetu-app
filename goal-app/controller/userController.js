@@ -1,7 +1,7 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const asyncHandler = require("express-async-handler");
-const User = require("../models/userModel");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const asyncHandler = require('express-async-handler');
+const User = require('../models/userModel');
 
 //@desc  register a user
 //@route POST /api/v1/goals
@@ -10,7 +10,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     res.status(400);
-    throw new Error("Please add all fields");
+    throw new Error('Please add all fields');
   }
 
   //check if user exist
@@ -18,7 +18,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (userExist) {
     res.status(400);
-    throw new Error("User already exist");
+    throw new Error('User already exist');
   }
 
   //hash password
@@ -44,7 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error('Invalid user data');
   }
 });
 
@@ -73,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid credentials");
+    throw new Error('Invalid credentials');
   }
 });
 
@@ -84,11 +84,11 @@ const getUsers = asyncHandler(async (req, res) => {
   // check for user email
   if (!req.user) {
     res.status(401);
-    throw new Error("User not found");
+    throw new Error('User not found');
   }
 
   //if found get all the users - password
-  const users = await User.find({}).select("-password");
+  const users = await User.find({}).select('-password');
   res.status(200).json(users);
 });
 
@@ -99,7 +99,7 @@ const updateUser = asyncHandler(async (req, res) => {
   const { password } = req.body;
   if (!password) {
     res.status(400);
-    throw new Error("Please add all fields");
+    throw new Error('Please add all fields');
   }
 
   //check if user exist
@@ -107,7 +107,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   if (!userExist) {
     res.status(400);
-    throw new Error("User does not exist");
+    throw new Error('User does not exist');
   }
 
   //hash password
@@ -135,7 +135,7 @@ const updateUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error('Invalid user data');
   }
 });
 
@@ -149,7 +149,7 @@ const getMe = asyncHandler(async (req, res) => {
 //Generate a token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+    expiresIn: '30d',
   });
 };
 

@@ -4,8 +4,7 @@ const path = require('path');
 const moment = require('moment');
 
 class InvoiceGenerator {
-  constructor(projects, data) {
-    this.projects = projects;
+  constructor(data) {
     this.data = data;
   }
 
@@ -27,6 +26,25 @@ class InvoiceGenerator {
       default:
         break;
     }
+  }
+
+  overdueTasks(data, getDays) {
+    return data.tasks.filter(
+      (item) => !item.outcomes && getDays(item.endDate, new Date(), 'day') < 0
+    );
+  }
+
+  outstandingTasks(data) {
+    return data?.tasks?.filter((item) => !item.outcomes);
+  }
+
+  remainingTasks(data, getDays) {
+    return data?.tasks?.filter(
+      (item) => !item.outcomes && getDays(item.endDate, new Date(), 'day') >= 0
+    );
+  }
+  completedTasks(data) {
+    return data?.tasks?.filter((item) => item.outcomes);
   }
 
   generateHeaders(doc) {
@@ -260,11 +278,23 @@ class InvoiceGenerator {
 
     //generate health table
     const health = {
-      time: 26,
-      tasks: 1,
-      workload: 4,
-      progress: 66,
-      month: 3,
+      time: Math.round(
+        (this.overdueTasks(this.data, this.getDays).length /
+          this.outstandingTasks(this.data).length) *
+          100,
+        2
+      ),
+      tasks: this.remainingTasks(this.data, this.getDays).length,
+      workload: this.overdueTasks(this.data, this.getDays).length,
+      progress: Math.round(
+        (this.completedTasks(this.data).length / this.data.tasks.length) * 100,
+        2
+      ),
+      month: this.data.tasks.filter(
+        (item) =>
+          item.outcomes &&
+          this.getDays(item.updatedAt, new Date(), 'month') === 0
+      ).length,
     };
 
     const healthInfo = [
@@ -347,7 +377,9 @@ class InvoiceGenerator {
     const fileName = `Projects.pdf`;
 
     // pipe to a writable stream which would save the result into the same directory
-    theOutput.pipe(fs.createWriteStream(fileName));
+    theOutput.pipe(
+      fs.createWriteStream(path.join(__dirname, `../pdf/${fileName}`))
+    );
 
     this.generateHeaders(theOutput);
 

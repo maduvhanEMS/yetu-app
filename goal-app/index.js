@@ -1,13 +1,16 @@
 const express = require('express');
-const colors = express('colors');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const { errorHandler } = require('./middleware/errorHandler');
 const { engine } = require('express-handlebars');
-const mail = require('./email');
+const path = require('path');
+const generate = require('./pdf/generatePDF');
+const barChart = require('./Charts/BarChart');
+const dognutChart = require('./Charts/Dognut');
+const overdue = require('./email/overDue');
+const EmailReports = require('./email/sendReport');
 
 // const emailTemplate
-
 require('dotenv').config();
 
 connectDB();
@@ -26,26 +29,32 @@ app.use(express.static('public'));
 app.use('/api/v1/goals', require('./routes/goalRoutes'));
 app.use('/api/v1/users', require('./routes/userRoutes'));
 app.use('/api/v1/tasks', require('./routes/taskRoutes'));
+app.use('/api/v1/mail', require('./routes/bulkMailRoutes'));
 app.use('/api/v1/sendEmail', require('./email/taskCreated'));
-app.use('/api/v1/', require('./pdf/reportsData'));
+// app.use('/api/v1/', require('./pdf/reportsData'));
+
+const generateReport = () => {
+  barChart();
+  dognutChart();
+  overdue();
+  setTimeout(() => generate(), 4000);
+  setTimeout(() => EmailReports, 150000);
+};
 
 //automate sending emails
-// setInterval(require('./email/overDue'), 10000);
+setInterval(() => generateReport(), 2592000);
 
-// require("./email/overDue");
-app.get('/', async (req, res) => {
-  res.render(require('./pdf/generatePDF'));
-});
-
-// app.get('/', async (req, res) => {
-//   res.render(require('./Charts/Dognut'));
-// });
-// app.use('/api', );
-// require('./Charts/Dognut');
-// require('./Charts/BarChart');
-// require('./Charts/gantt');
-
-const sendOverEmail = () => {};
+//production server
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
 
 app.use(errorHandler);
 

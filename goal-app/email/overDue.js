@@ -62,7 +62,7 @@ const EmailTasks = asyncHandler(async (req, res) => {
       //send email
       let mailOptions = {
         from: process.env.EMAIL,
-        to: process.env.EMAIL,
+        to: 'maduvha121@outlook.com',
         subject: 'Yetu Investments: Overdue Tasks',
         attachments: [
           {
